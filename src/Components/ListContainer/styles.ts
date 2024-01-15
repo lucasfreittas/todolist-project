@@ -77,4 +77,5 @@ export const FilledList = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    gap: 0.75rem;
 `;

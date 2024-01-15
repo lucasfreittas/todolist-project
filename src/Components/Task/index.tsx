@@ -1,21 +1,43 @@
+import { useState } from 'react';
 import { Container } from './styles';
 import { Trash, Circle, CheckCircle, Check } from "@phosphor-icons/react";
 
-export function Task(){
+interface TaskProps {
+    id: number,
+    content: string,
+    handleSwitchTaskStatus: any,
+    status: string,
+    onDeleteTask: any
+}
 
-    function handleCheckbox(event: boolean){
-        console.log(event)
+export function Task({ content, handleSwitchTaskStatus, id, status,  onDeleteTask }: TaskProps){
+    const [taskComplete, setTaskComplete] = useState(false)
+
+    function handleCheckbox(event: any){
+        setTaskComplete(event.target.checked)
+        handleSwitchTaskStatus(id)
+    };
+
+    function handleDeleteTask(){
+        onDeleteTask(id)
     }
+
+    function switchClass(){
+        if(status === 'completed'){return 'taskCompleted'}
+        else{ return ''}
+    };
+
     return(
         <Container >
-            <li className='taskCompleted'>
+            <li className={switchClass()}>
                 <div className='radioInputContainer'>
-                    <input type="checkbox" onChange={e => handleCheckbox(e.target.checked)} />
-                    {/* <Circle size={24} /> */}
-                    <CheckCircle size={24} weight="fill" />
+                    <input type="checkbox" onChange={e => handleCheckbox(e)} />
+
+                    { status == 'opened' ? <Circle size={24} /> : <CheckCircle size={24} weight="fill" />}
+                    
                 </div>
-                <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-                <button><Trash size={16}/></button>
+                <p>{content}</p>
+                <button onClick={handleDeleteTask}><Trash size={20}/></button>
             </li> 
         </Container>
     )
