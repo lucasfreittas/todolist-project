@@ -1,17 +1,22 @@
-import { Container, Counter, List, EmptyList } from './syles';
+import { Container, Counter, List, EmptyList, FilledList } from './syles';
 import  ClipboardIcon from '../../Assets/clipboard-icon.svg'
 
-export function Tasks(){
+import { Task } from '../Task'
+
+export function ListContainer(){
 
     function renderTaskList(){
         return(
-            <EmptyList>
-                <img src={ClipboardIcon} alt="" />
-                <div>
-                    <p>Você ainda não tem tarefas cadastradas</p>
-                    <span>Crie tarefas e organize seus itens a fazer</span>
-                </div>
-            </EmptyList>
+            <FilledList>
+                <Task />
+            </FilledList>
+            // <EmptyList>
+            //     <img src={ClipboardIcon} alt="" />
+            //     <div>
+            //         <p>Você ainda não tem tarefas cadastradas</p>
+            //         <span>Crie tarefas e organize seus itens a fazer</span>
+            //     </div>
+            // </EmptyList>
         )
     }
 

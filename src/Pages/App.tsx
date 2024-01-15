@@ -3,7 +3,7 @@ import { Container, Main, Form } from './styles';
 import { PlusCircle } from "@phosphor-icons/react";
 
 import { Header } from '../Components/Header';
-import { Tasks } from '../Components/Tasks';
+import { ListContainer } from '../Components/ListContainer';
 
 export function App() {
 
@@ -17,7 +17,7 @@ export function App() {
             <button>Criar <PlusCircle size={16}/></button>
           </Form>
 
-          <Tasks />
+          <ListContainer />
         </Main>
     </Container>
   )
